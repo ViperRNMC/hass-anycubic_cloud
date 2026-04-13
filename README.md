@@ -80,7 +80,6 @@ Current features:
 > %AppData%\AnycubicSlicerNext\AnycubicSlicerNext.conf
 > ```
 > or on macOS:
-> You can open this directly from Slicer Next via `Help` -> `Show Configuration Folder`.
 > ```
 > ~/Library/Application Support/AnycubicSlicerNext/AnycubicSlicerNext.conf
 > ```
