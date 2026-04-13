@@ -1,9 +1,9 @@
 > [!NOTE]  
-> Anycubic have been attempting to block MQTT access, see [here](https://github.com/WaresWichall/hass-anycubic_cloud/issues/33)
+> Anycubic have been attempting to block MQTT access, see [here](https://github.com/ViperRNMC/hass-anycubic_cloud/issues/33)
 > 
 > I'm moving on to another printer brand and won't be active on this project as much but will still be fixing issues.
 > 
-> MQTT access is now available using Slicer Next (windows version) tokens.
+> MQTT access is now available using Slicer Next tokens (Windows and macOS).
 > 
 > Still works as of 01/12/2024.
 
@@ -28,14 +28,14 @@ If you find updates for any sensors are only received every minute, please open 
 
 ## Frontend Card
 
-This integration couples with my [Anycubic card for Home Assistant](https://github.com/WaresWichall/hass-anycubic_card)
+This integration couples with my [Anycubic card for Home Assistant](https://github.com/ViperRNMC/hass-anycubic_card)
 
 
 ## Gallery
 
 
-<img width="300" alt="" src="https://raw.githubusercontent.com/WaresWichall/hass-anycubic_cloud/master/screenshots/kobra3-1.png"> <img width="300" alt="" src="https://raw.githubusercontent.com/WaresWichall/hass-anycubic_cloud/master/screenshots/anycubic-ace-ui.gif"> <img width="300" alt="" src="https://raw.githubusercontent.com/WaresWichall/hass-anycubic_cloud/master/screenshots/kobra2-2.png">
-<img width="300" alt="" src="https://raw.githubusercontent.com/WaresWichall/hass-anycubic_cloud/master/screenshots/kobra3-print.png"> <img width="200" alt="" src="https://raw.githubusercontent.com/WaresWichall/hass-anycubic_cloud/master/screenshots/kobra2-1.png">
+<img width="300" alt="" src="screenshots/kobra3-1.png"> <img width="300" alt="" src="screenshots/anycubic-ace-ui.gif"> <img width="300" alt="" src="screenshots/kobra2-2.png">
+<img width="300" alt="" src="screenshots/kobra3-print.png"> <img width="200" alt="" src="screenshots/kobra2-1.png">
 
 
 ## Features
@@ -80,12 +80,14 @@ Current features:
 ### Slicer authentication
 
 > [!IMPORTANT]  
-> Only tested / supported with Slicer Next for Windows
+> Slicer token flow is supported for Windows and macOS.
 
 1. Make sure your installation of Slicer Next is logged in, then close it.
 2. Locate your `AnycubicSlicerNext` config directory.
 > [!NOTE]  
-> This is found in:
+> You can open this directly from Slicer Next via `Help` -> `Show Configuration Folder`.
+>
+> Typical locations are:
 > ```
 > %AppData%\AnycubicSlicerNext\AnycubicSlicerNext.conf
 > ```
@@ -93,11 +95,19 @@ Current features:
 > ```
 > C:\Users\<USERNAME>\AppData\Roaming\AnycubicSlicerNext\AnycubicSlicerNext.conf
 > ```
+> or on macOS:
+> ```
+> /Users/<USERNAME>/Library/Application Support/AnycubicSlicerNext/AnycubicSlicerNext.conf
+> ```
+> or
+> ```
+> ~/Library/Application Support/AnycubicSlicerNext/AnycubicSlicerNext.conf
+> ```
 3. Copy/save the whole `access_token` string without the quotes, it should be a 344 character string.
 4. Ideally you should now clear your login config for the slicer to prevent it logging in at the same time as Home Assistant.
     This can be done setting your `access_token` to an empty string in the config file, e.g. `"access_token": "",`
 
-<img width="400" alt="" src="https://raw.githubusercontent.com/WaresWichall/hass-anycubic_cloud/dev/screenshots/auth_slicer_token.png">
+<img width="400" alt="" src="screenshots/auth_slicer_token.png">
 
 
 ### Web authentication
@@ -111,7 +121,7 @@ Current features:
 4. Paste `window.localStorage["XX-Token"]` into the **console**
 5. Copy/save the long string of numbers and letters without the `''` - this is your token.
 
-<img width="400" alt="" src="https://raw.githubusercontent.com/WaresWichall/hass-anycubic_cloud/dev/screenshots/anycubic_api_token.png">
+<img width="400" alt="" src="screenshots/anycubic_api_token.png">
 
 ### Re-Authentication
 
@@ -120,9 +130,10 @@ If you log yourself out or your token expires you'll get a re-authentication war
 
 ## Donations
 
-<a href="https://www.buymeacoffee.com/wareswichall"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=wareswichall&button_colour=28303f&font_colour=ffffff&font_family=Lato&outline_colour=ffffff&coffee_colour=FFDD00" /></a>
+Support this fork by opening issues and PRs in this repository.
 
 
 ## Thanks
 
+Thanks to @WaresWichall for the original Anycubic Cloud integration work.
 Thanks to @dangreco for his original work on threedy which I first modded and then completely rewrote with Lit instead of React.
